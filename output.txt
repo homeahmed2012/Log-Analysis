@@ -5,9 +5,9 @@ What answer do you want?
 2. Who are the most popular article authors of all time?
 3. On which days did more than 1% of requests lead to errors?
 1
-"Goats eat Google's lawn" -- 85775 views
-"Trouble for troubled troublemakers" -- 85679 views
-"There are a lot of bears" -- 85392 views
+"Candidate is jerk, alleges rival" -- 338647 views
+"Bears love berries, alleges bear" -- 253801 views
+"Bad things gone, say good people" -- 170098 views
 $ python analyse.py
 What answer do you want?
 * enter a numerical value(1, 2 or 3).
@@ -15,10 +15,10 @@ What answer do you want?
 2. Who are the most popular article authors of all time?
 3. On which days did more than 1% of requests lead to errors?
 2
-Markoff Chaney -- 85387 views
-Ursula La Multa -- 512805 views
-Rudolf von Treppenwitz -- 427781 views
-Anonymous Contributor -- 171762 views
+Ursula La Multa -- 507594 views
+Rudolf von Treppenwitz -- 423457 views
+Anonymous Contributor -- 170098 views
+Markoff Chaney -- 84557 views
 $ python analyse.py
 What answer do you want?
 * enter a numerical value(1, 2 or 3).

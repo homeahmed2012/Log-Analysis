@@ -15,9 +15,9 @@ def mostPopularArticles():
     db = connect()
     c = db.cursor()
     c.execute("""SELECT '"' || title || '"',
-                 count(log.path) || ' views' as num FROM
+                 count(log.path) as num FROM
                  articles, log
-                 WHERE log.path LIKE concat('%',articles.slug,'%')
+                 WHERE log.path LIKE concat('/article/',articles.slug)
                  GROUP BY title
                  ORDER BY num DESC
                  LIMIT 3""")
@@ -32,9 +32,9 @@ def mostPopularAuthors():
     """
     db = connect()
     c = db.cursor()
-    c.execute("""SELECT authors.name, count(log.path)|| ' views' as num
+    c.execute("""SELECT authors.name, count(log.path) as num
                  FROM articles, log, authors
-                 WHERE log.path LIKE concat('%',articles.slug,'%') AND
+                 WHERE log.path LIKE concat('/article/',articles.slug) AND
                  articles.author = authors.id
                  GROUP BY authors.name
                  ORDER BY num DESC""")
@@ -66,17 +66,20 @@ if __name__ == '__main__':
                   "2. Who are the most popular article authors of all time?\n"
                   "3. On which days did more than 1% of requests"
                   " lead to errors?\n")
-        if q == '1':
+        if int(q) == 1:
             res = mostPopularArticles()
+            for item in res:
+                print(str(item[0]) + ' -- ' + str(item[1]) + ' views')
             break
-        elif q == '2':
+        elif int(q) == 2:
             res = mostPopularAuthors()
+            for item in res:
+                print(str(item[0]) + ' -- ' + str(item[1]) + ' views')
             break
-        elif q == '3':
+        elif int(q) == 3:
             res = requestsError()
+            for item in res:
+                print(str(item[0]) + ' -- ' + item[1])
             break
         else:
             print("invalid input please choose again.")
-
-    for item in res:
-        print(str(item[0])+' -- '+item[1])
